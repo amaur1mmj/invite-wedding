@@ -1,0 +1,19 @@
+# Desabilitar cache para arquivos CSS e JS em desenvolvimento
+<FilesMatch "\.(js|css)$">
+    Header Set Cache-Control "no-cache, no-store, must-revalidate"
+    Header Set Pragma "no-cache"
+    Header Set Expires "0"
+</FilesMatch>
+
+# Cache para imagens (7 dias)
+<FilesMatch "\.(jpg|jpeg|png|gif|webp|svg)$">
+    Header Set Cache-Control "max-age=604800"
+</FilesMatch>
+
+# Cache para fontes (30 dias)
+<FilesMatch "\.(woff|woff2|ttf|otf|eot)$">
+    Header Set Cache-Control "max-age=2592000"
+</FilesMatch>
+
+# Permitir acesso a index.html
+DirectoryIndex index.html
